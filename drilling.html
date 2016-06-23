@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drilling</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/styles.css" />
+    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script src="scripts/tether.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/Chart.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/jtable.js"></script>
+
+
+</head>
+<body>
+
+    <div class="container" id="wrapper">
+        <div class="container" id="navigation">
+            <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" style="background-color: #34495e">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+                <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+                    <a class="navbar-brand" href="index.html">DASHBOARD</a>
+                    <div class="nav navbar-nav">
+                        <a class="nav-item nav-link" href="index.html">All</a>
+                        <a class="nav-item nav-link" href="faces.html">Faces</a>
+                        <a class="nav-item nav-link" href="stopes.html">Stopes</a>
+                        <div class="dropdown nav-item">
+                            <a class="nav-item nav-link dropdown-toggle active" href="#" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drilling <span class="sr-only">(current)</a>
+                            <div class="dropdown-menu" aria-labelledby="dLabel">
+                                <a class="dropdown-item" href="#">Production</a>
+                                <a class="dropdown-item" href="dhvalidation.html">Data Validation</a>
+                                <a class="dropdown-item" href="grouting.html">Grouting</a>
+                            </div>
+                        </div>
+                        <a class="nav-item nav-link" href="mill.html">Mill</a>
+                        <a class="nav-item nav-link pull-md-right" href="dailyreport.html">Daily Report</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row" id = "dhProd"></div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3" style="padding-left:50px">
+                <dl id="legend">
+                    <dt id = "metresLegend"></dt>
+                    <dd>Metres Drilled</dd>
+                    <dt id = "bobLegend"></dt>
+                    <dd>Utilisation (Hours)</dd>
+                </dl>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'php/dhprod.php',
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                    rigPlotData(data);
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>

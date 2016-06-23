@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Report</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/styles.css" />
+    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script src="scripts/tether.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/Chart.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/jtable.js"></script>
+
+
+</head>
+<body>
+
+    <div class="container" id="wrapper">
+        <div class="container" id="navigation">
+            <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" style="background-color: #34495e">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+                <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+                    <a class="navbar-brand" href="index.html">DASHBOARD</a>
+                    <div class="nav navbar-nav">
+                        <a class="nav-item nav-link" href="index.html">All</a>
+                        <a class="nav-item nav-link" href="faces.html">Faces</a>
+                        <a class="nav-item nav-link" href="stopes.html">Stopes</a>
+                        <div class="dropdown nav-item">
+                            <a class="nav-item nav-link dropdown-toggle" href="#" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drilling</a>
+                            <div class="dropdown-menu" aria-labelledby="dLabel">
+                                <a class="dropdown-item" href="drilling.html">Production</a>
+                                <a class="dropdown-item" href="dhvalidation.html">Data Validation</a>
+                                <a class="dropdown-item" href="grouting.html">Grouting</a>
+                            </div>
+                        </div>
+                        <a class="nav-item nav-link" href="mill.html">Mill</a>
+                        <a class="nav-item nav-link pull-md-right active" href="#">Daily Report <span class="sr-only">(current)</span></a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <h3 class="card-header">  Daily Production - <span id="curDate"></span></h3>
+                    <div class="card-block">
+                        <div class="table-responsive card-text" id="dailyprod"></div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+       <div class="container" id="seperator"></div>
+
+               <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <h3 class="card-header">  Production Forecast - <span id="curDateF"></span></h3>
+                    <div class="card-block">
+                        <div class="table-responsive card-text" id="dailyForecast"></div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+       <div class="container" id="seperator"></div>
+
+       <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <h3 class="card-header">Monthly Summary</h3>
+                    <div class="card-block">
+                        <div class="table-responsive card-text" id="summary"></div>
+                    </div>
+                </div>
+            </div>
+       </div>
+
+       <div class="container" id="seperator"></div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h3>Daily Mine Grade</h3>
+                <canvas id="dailygrade" width="100vw" height="100vh"></canvas>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3">
+                <dl id="legend">
+                    <dt id = "tGrade"></dt>
+                    <dd>Daily Grade</dd>
+                    <dt id="dGrade"></dt>
+                    <dd>Development Grade</dd>
+                    <dt id="sGrade"></dt>
+                    <dd>Stope Grade</dd>
+                </dl>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if(dd<10) {
+                dd='0'+dd
+            }
+
+            if(mm<10) {
+                mm='0'+mm
+            }
+            $('#curDate').html((dd - 1) +'/'+mm+'/'+yyyy);
+            $('#curDateF').html(dd +'/'+mm+'/'+yyyy);
+
+            Chart.defaults.global.responsive = true;
+
+            $.ajax({
+                url: 'php/dailyprod.php',
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                   var grouping = ["Type", "Destination"];
+                   var headers = ["Type", "Destination", "Source", "Tonnes", "Au (oz)", "Ag (oz)", "Au (g/t)", "Ag (g/t)"]
+                   jTable("#dailyprod", data, grouping, true, headers);
+                }
+            });
+
+            $.ajax({
+                url: 'php/dailyforecast.php',
+                type: "GET",
+                dataType: "json",
+                success: function(data) {
+                   var grouping = ["Shift", "Stockpile"];
+                   var headers = ["Shift", "Stockpile", "Source", "Tonnes", "Au (g/t)", "Au (oz)"]
+                   jTable("#dailyForecast", data, grouping, true, headers);
+                }
+            });
+
+            dailyReport();
+
+        });
+    </script>
+
+</body>
+</html>

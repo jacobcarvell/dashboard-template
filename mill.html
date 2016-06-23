@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/styles.css" />
+    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script src="scripts/tether.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/Chart.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+
+
+</head>
+<body>
+
+    <div class="container" id="wrapper">
+        <div class="container" id="navigation">
+            <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" style="background-color: #34495e">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+                <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+                    <a class="navbar-brand" href="index.html">DASHBOARD</a>
+                    <div class="nav navbar-nav">
+                        <a class="nav-item nav-link" href="index.html">All</a>
+                        <a class="nav-item nav-link" href="faces.html">Faces</a>
+                        <a class="nav-item nav-link" href="stopes.html">Stopes</a>
+                        <div class="dropdown nav-item">
+                            <a class="nav-item nav-link dropdown-toggle" href="#" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drilling</a>
+                            <div class="dropdown-menu" aria-labelledby="dLabel">
+                                <a class="dropdown-item" href="drilling.html">Production</a>
+                                <a class="dropdown-item" href="dhvalidation.html">Data Validation</a>
+                                <a class="dropdown-item" href="grouting.html">Grouting</a>
+                            </div>
+                        </div>
+                        <a class="nav-item nav-link active" href="#">Mill <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link pull-md-right" href="dailyreport.html">Daily Report</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row centre">
+            <div class="col-xs-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" for="datefrom">Date From</label>
+                        <input type="date" class="form-control form-control-sm" id="datefrom" placeholder="Date From">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="dateto">Date To</label>
+                        <input type="date" class="form-control form-control-sm" id="dateto" placeholder="Date To">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="filter">Filter</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12" id="canvasWrapper">
+                <h3>Crushed vs Milled</h3>
+                <canvas id="mill" width="100vw" height="100vh"></canvas>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <dl id="legend">
+                    <dt id = "ctLegend"></dt>
+                    <dd>Crushed Tonnes</dd>
+                    <dt id = "mtLegend"></dt>
+                    <dd>Milled Tonnes</dd>
+                    <dt id="cgLegend"></dt>
+                    <dd>Crushed Grade</dd>
+                    <dt id="mgLegend"></dt>
+                    <dd>Milled Grade</dd>
+                </dl>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            Chart.defaults.global.responsive = true;
+
+            var now = new Date();
+            var day = ("0" + now.getDate()).slice(-2);
+            var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+            $("#datefrom").val(now.getFullYear()+"-"+(month)+"-01");
+            $("#dateto").val(now.getFullYear()+"-"+(month)+"-"+(day));
+
+            plotMill($("#datefrom").val(), $("#dateto").val());
+        });
+
+        $("#filter").click(function() {
+            plotMill($("#datefrom").val(), $("#dateto").val());
+        });
+    </script>
+
+</body>
+</html>

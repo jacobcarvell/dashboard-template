@@ -1,0 +1,183 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+h3 {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#navigation {
+    margin-bottom: 20px;
+    padding-bottom: 70px;
+}
+
+.navbar-brand {
+  float: none;
+}
+.navbar-nav .nav-item {
+  float: none;
+}
+.navbar-divider,
+.navbar-nav .nav-item+.nav-item,
+.navbar-nav .nav-link + .nav-link {
+  margin-left: 0;
+}
+@media (min-width: 34em) {
+  .navbar-brand {
+    float: left;
+  }
+  .navbar-nav .nav-item {
+    float: left;
+  }
+  .navbar-divider,
+  .navbar-nav .nav-item+.nav-item,
+  .navbar-nav .nav-link + .nav-link {
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 917px) {
+    .navbar {
+        padding-left: 200px;
+        padding-right: 200px;
+    }
+    #legend {
+        padding-left: 60px;
+    }
+}
+
+@media (max-width: 992px) {
+    .col-md-6 {width: 100%}
+}
+
+.table th {
+    border-top-style: none;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+canvas {
+    width: 100% !important;
+    max-width: 1440px;
+    height: auto !important;
+    max-height: 600px;
+    margin: 0 0 30px 0;
+}
+
+.card-header {
+    background-color:#ecf0f1
+}
+
+.donut-inner {
+    position: absolute;
+    top:40%;
+    text-align: center;
+    left: 51%;
+    transform: translate(-50%, 0);
+}
+.donut-inner h5 {
+    margin-bottom: 5px;
+    margin-top: 0;
+}
+.donut-inner span {
+    font-size: 2em;
+}
+
+#seperator {
+    height: 50px;
+    width: 100%;
+}
+
+#legend dt, dd {
+    float: left;
+    display: block;
+    text-align: center;
+}
+
+#legend dt {
+    width: 15px;
+}
+
+#ctLegend {
+    border: 1px solid#ccc;
+    background-color: #34495e;
+    color: #34495e;
+    height: 15px;
+    margin: 5px;
+}
+
+#mtLegend {
+    border: 1px solid#ccc;
+    background-color: #95a5a6;
+    color: #95a5a6;
+    height: 15px;
+    margin: 5px;
+}
+
+#cgLegend {
+    height: 4px;
+    background-color: #34495e;
+    border: 2px solid#34495e;
+    margin: 10px 5px 5px 5px;
+}
+
+#mgLegend {
+    height: 4px;
+    background-color: #7f8c8d;
+    border: 2px solid#7f8c8d;
+    margin: 10px 5px 5px 5px;
+}
+
+#metresLegend {
+    border: 1px solid#ccc;
+    background-color: #34495e;
+    color: #34495e;
+    height: 15px;
+    margin: 5px;
+}
+
+#bobLegend {
+    height: 4px;
+    background-color: #7f8c8d;
+    border: 2px solid#7f8c8d;
+    margin: 10px 5px 5px 5px;
+}
+
+#tGrade {
+    height: 4px;
+    background-color: #2c3e50;
+    border: 2px solid#2c3e50;
+    margin: 10px 5px 5px 5px;
+}
+
+#dGrade {
+    height: 4px;
+    background-color: #2ecc71;
+    border: 2px solid#2ecc71;
+    margin: 10px 5px 5px 5px;
+}
+
+#sGrade {
+    height: 4px;
+    background-color: #3498db;
+    border: 2px solid#3498db;
+    margin: 10px 5px 5px 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.form-control-sm {
+    height: 40px;
+}
+
+.centre {
+    text-align: center;
+}
+
+.centre form {
+    display: inline-block;
+}

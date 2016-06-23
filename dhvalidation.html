@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drillhole Validation</title>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="Content/styles.css" />
+    <script src="scripts/jquery-2.2.0.min.js"></script>
+    <script src="scripts/tether.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/Chart.min.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/jtable.js"></script>
+
+
+</head>
+<body>
+
+    <div class="container" id="wrapper">
+        <div class="container" id="navigation">
+            <nav class="navbar navbar-fixed-top navbar-dark bg-inverse" style="background-color: #34495e">
+                <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">&#9776;</button>
+                <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2">
+                    <a class="navbar-brand" href="index.html">DASHBOARD</a>
+                    <div class="nav navbar-nav">
+                        <a class="nav-item nav-link" href="index.html">All</a>
+                        <a class="nav-item nav-link" href="faces.html">Faces</a>
+                        <a class="nav-item nav-link" href="stopes.html">Stopes</a>
+                        <div class="dropdown nav-item">
+                            <a class="nav-item nav-link dropdown-toggle active" href="#" id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drilling <span class="sr-only">(current)</a>
+                            <div class="dropdown-menu" aria-labelledby="dLabel">
+                                <a class="dropdown-item" href="drilling.html">Production</a>
+                                <a class="dropdown-item" href="#">Data Validation</a>
+                                <a class="dropdown-item" href="grouting.html">Grouting</a>
+                            </div>
+                        </div>
+                        <a class="nav-item nav-link" href="mill.html">Mill</a>
+                        <a class="nav-item nav-link pull-md-right" href="dailyreport.html">Daily Report</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 col-md-12" style="padding: 0">
+                <div class="card">
+                    <h3 class="card-header">Drillhole Validation</h3>
+                    <div class="card-block">
+                        <div class="card-text table-responsive" id="drillValidation"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+            url: 'php/dhvalidation.php',
+            type: "GET",
+            dataType: "json",
+            success: function(data) {
+                jTable_basic("#drillValidation", data,
+                ["Hole ID", " Date Started", "Date Finished", "Collar Point", "Collar Depth", "Metadata Depth", "Lithology Depth", "Alteration Depth", "Vein Depth", "Logged By", "0m Survey Type", "Max Survey Depth"]);
+                formatting();
+                }
+            });
+
+        });
+
+        function formatting() {
+            $('#drillValidation tr').each(function (i, row) {
+                var arr = [];
+                arr.push($(this).children().toArray());
+                if (i != 0){
+                    if (arr[0][2].textContent == "null") {
+                        $(this).find(':nth-child(3)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][3].textContent != "COLL") {
+                        $(this).find(':nth-child(4)').addClass("table-warning");
+                        $(this).find(':nth-child(1)').addClass("table-warning");
+                    }
+                    if (arr[0][2].textContent == "null") {
+                        $(this).find(':nth-child(7)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][4].textContent == "999.0") {
+                        $(this).find(':nth-child(5)').addClass("table-warning");
+                        $(this).find(':nth-child(1)').addClass("table-warning");
+                    }
+                    if (arr[0][4].textContent != arr[0][5].textContent) {
+                        $(this).find(':nth-child(6)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][4].textContent != arr[0][6].textContent) {
+                        $(this).find(':nth-child(7)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][4].textContent != arr[0][7].textContent) {
+                        $(this).find(':nth-child(8)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][8].textContent == "0.0") {
+                        $(this).find(':nth-child(9)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][9].textContent == "null") {
+                        $(this).find(':nth-child(10)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                    if (arr[0][10].textContent != "COLL" && arr[0][10].textContent != "PLAN") {
+                        $(this).find(':nth-child(11)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    } else if (arr[0][10].textContent == "PLAN") {
+                        $(this).find(':nth-child(11)').addClass("table-warning");
+                        $(this).find(':nth-child(1)').addClass("table-warning");
+                    }
+                    if (arr[0][4].textContent - arr[0][11].textContent > 10 || arr[0][11].textContent == "null") {
+                        $(this).find(':nth-child(12)').addClass("table-danger");
+                        $(this).find(':nth-child(1)').addClass("table-danger");
+                    }
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
