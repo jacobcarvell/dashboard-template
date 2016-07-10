@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="Content/styles.css" />
-    <script src="scripts/jquery-2.2.0.min.js"></script>
-    <script src="scripts/tether.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/Chart.min.js"></script>
-    <script src="scripts/scripts.js"></script>
-    <script src="scripts/jtable.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="tether.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="Chart.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="jtable.js"></script>
 
 
 </head>
@@ -60,14 +60,58 @@
 
     <script>
         $(document).ready(function () {
-            $.ajax({
-                url: 'php/dhprod.php',
-                type: "GET",
-                dataType: "json",
-                success: function(data) {
-                    rigPlotData(data);
-                }
-            });
+
+            var data = [{"Date_of":"15\/06\/2016 D","Rig":"RIG_001","Metres":"0.0","DrillHours":"0.00"},
+{"Date_of":"15\/06\/2016 D","Rig":"RIG_002","Metres":"36.0","DrillHours":"9.83"},
+{"Date_of":"15\/06\/2016 D","Rig":"RIG_003","Metres":"18.0","DrillHours":"5.00"},
+{"Date_of":"15\/06\/2016 D","Rig":"RIG_001","Metres":"74.1","DrillHours":"8.83"},
+{"Date_of":"15\/06\/2016 N","Rig":"RIG_002","Metres":"24.0","DrillHours":"9.17"},
+{"Date_of":"15\/06\/2016 N","Rig":"RIG_003","Metres":"18.2","DrillHours":"3.33"},
+{"Date_of":"15\/06\/2016 N","Rig":"RIG_001","Metres":"42.0","DrillHours":"7.00"},
+{"Date_of":"16\/06\/2016 D","Rig":"RIG_001","Metres":"31.1","DrillHours":"8.17"},
+{"Date_of":"16\/06\/2016 D","Rig":"RIG_002","Metres":"24.0","DrillHours":"7.17"},
+{"Date_of":"16\/06\/2016 D","Rig":"RIG_003","Metres":"38.7","DrillHours":"9.00"},
+{"Date_of":"16\/06\/2016 D","Rig":"RIG_001","Metres":"27.0","DrillHours":"6.50"},
+{"Date_of":"16\/06\/2016 N","Rig":"RIG_002","Metres":"30.0","DrillHours":"9.83"},
+{"Date_of":"16\/06\/2016 N","Rig":"RIG_003","Metres":"36.3","DrillHours":"6.83"},
+{"Date_of":"16\/06\/2016 N","Rig":"RIG_001","Metres":"5.2","DrillHours":"1.33"},
+{"Date_of":"17\/06\/2016 D","Rig":"RIG_002","Metres":"24.0","DrillHours":"8.00"},
+{"Date_of":"17\/06\/2016 D","Rig":"RIG_003","Metres":"24.0","DrillHours":"6.17"},
+{"Date_of":"17\/06\/2016 D","Rig":"RIG_001","Metres":"62.7","DrillHours":"9.17"},
+{"Date_of":"17\/06\/2016 N","Rig":"RIG_002","Metres":"36.0","DrillHours":"9.50"},
+{"Date_of":"17\/06\/2016 N","Rig":"RIG_003","Metres":"36.0","DrillHours":"9.00"},
+{"Date_of":"17\/06\/2016 N","Rig":"RIG_001","Metres":"43.0","DrillHours":"9.67"},
+{"Date_of":"18\/06\/2016 D","Rig":"RIG_002","Metres":"30.0","DrillHours":"9.17"},
+{"Date_of":"18\/06\/2016 D","Rig":"RIG_003","Metres":"18.0","DrillHours":"4.83"},
+{"Date_of":"18\/06\/2016 D","Rig":"RIG_001","Metres":"32.3","DrillHours":"9.33"},
+{"Date_of":"18\/06\/2016 N","Rig":"RIG_002","Metres":"36.0","DrillHours":"8.50"},
+{"Date_of":"18\/06\/2016 N","Rig":"RIG_001","Metres":"44.3","DrillHours":"6.00"},
+{"Date_of":"19\/06\/2016 D","Rig":"RIG_001","Metres":"33.0","DrillHours":"7.67"},
+{"Date_of":"19\/06\/2016 D","Rig":"RIG_002","Metres":"36.0","DrillHours":"10.17"},
+{"Date_of":"19\/06\/2016 D","Rig":"RIG_003","Metres":"6.2","DrillHours":"2.50"},
+{"Date_of":"19\/06\/2016 D","Rig":"RIG_001","Metres":"63.0","DrillHours":"9.33"},
+{"Date_of":"19\/06\/2016 N","Rig":"RIG_002","Metres":"17.5","DrillHours":"4.50"},
+{"Date_of":"19\/06\/2016 N","Rig":"RIG_003","Metres":"42.0","DrillHours":"8.00"},
+{"Date_of":"19\/06\/2016 N","Rig":"RIG_001","Metres":"39.0","DrillHours":"9.00"},
+{"Date_of":"20\/06\/2016 D","Rig":"RIG_002","Metres":"12.2","DrillHours":"2.67"},
+{"Date_of":"20\/06\/2016 D","Rig":"RIG_003","Metres":"36.0","DrillHours":"6.33"},
+{"Date_of":"20\/06\/2016 D","Rig":"RIG_001","Metres":"35.2","DrillHours":"6.67"},
+{"Date_of":"20\/06\/2016 N","Rig":"RIG_002","Metres":"36.3","DrillHours":"9.83"},
+{"Date_of":"20\/06\/2016 N","Rig":"RIG_003","Metres":"36.0","DrillHours":"7.67"},
+{"Date_of":"20\/06\/2016 N","Rig":"RIG_001","Metres":"57.0","DrillHours":"9.33"},
+{"Date_of":"21\/06\/2016 D","Rig":"RIG_001","Metres":"16.3","DrillHours":"4.00"},
+{"Date_of":"21\/06\/2016 D","Rig":"RIG_002","Metres":"29.9","DrillHours":"9.00"}];
+
+            rigPlotData(data);
+
+            // $.ajax({
+            //     url: 'php/dhprod.php',
+            //     type: "GET",
+            //     dataType: "json",
+            //     success: function(data) {
+            //         rigPlotData(data);
+            //     }
+            // });
 
         });
     </script>

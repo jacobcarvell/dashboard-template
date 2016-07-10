@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="Content/styles.css" />
-    <script src="scripts/jquery-2.2.0.min.js"></script>
-    <script src="scripts/tether.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/Chart.min.js"></script>
-    <script src="scripts/scripts.js"></script>
-    <script src="scripts/jtable.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="tether.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="Chart.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="jtable.js"></script>
 
 
 </head>
@@ -59,16 +59,32 @@
 
     <script>
         $(document).ready(function () {
-            $.ajax({
-            url: 'php/dhvalidation.php',
-            type: "GET",
-            dataType: "json",
-            success: function(data) {
-                jTable_basic("#drillValidation", data,
-                ["Hole ID", " Date Started", "Date Finished", "Collar Point", "Collar Depth", "Metadata Depth", "Lithology Depth", "Alteration Depth", "Vein Depth", "Logged By", "0m Survey Type", "Max Survey Depth"]);
-                formatting();
-                }
-            });
+
+            var data = [{"Hole_ID":"HOLE001","DateStarted":"19\/06\/2016","DateCompleted":"19\/06\/2016","Orig_Survey_Method":"COLL","Max_Depth":"999.0","MetaDepth":"0.0","LithDepth":"0.0","AltDepth":"0.0","VeinDepth":"0.0","Logged_By":null,"CollSurvey":"PLAN","MaxSurveyDepth":"117.0"},
+{"Hole_ID":"HOLE002","DateStarted":"15\/06\/2016","DateCompleted":"18\/06\/2016","Orig_Survey_Method":"COLL","Max_Depth":"189.2","MetaDepth":"189.2","LithDepth":"189.2","AltDepth":"189.2","VeinDepth":"177.5","Logged_By":"Geologist","CollSurvey":"PLAN","MaxSurveyDepth":"171.0"},
+{"Hole_ID":"HOLE003","DateStarted":"08\/06\/2016","DateCompleted":"15\/06\/2016","Orig_Survey_Method":"COLL","Max_Depth":"290.9","MetaDepth":"290.9","LithDepth":"290.9","AltDepth":"290.9","VeinDepth":"244.1","Logged_By":"Geologist","CollSurvey":"PLAN","MaxSurveyDepth":"290.0"},
+{"Hole_ID":"HOLE004","DateStarted":"15\/04\/2016","DateCompleted":"24\/04\/2016","Orig_Survey_Method":"COLL","Max_Depth":"300.0","MetaDepth":"100.0","LithDepth":"100.0","AltDepth":"100.0","VeinDepth":"100.0","Logged_By":"Geologist","CollSurvey":"COLL","MaxSurveyDepth":"295.0"},
+{"Hole_ID":"HOLE005","DateStarted":"15\/04\/2016","DateCompleted":"24\/04\/2016","Orig_Survey_Method":"COLL","Max_Depth":"250.0","MetaDepth":"250.0","LithDepth":"250.0","AltDepth":"250.0","VeinDepth":"250.0","Logged_By":"Geologist","CollSurvey":"COLL","MaxSurveyDepth":"12.0"},
+{"Hole_ID":"HOLE006","DateStarted":"15\/04\/2016","DateCompleted":"24\/04\/2016","Orig_Survey_Method":"COLL","Max_Depth":"353.8","MetaDepth":"353.8","LithDepth":"353.8","AltDepth":"353.8","VeinDepth":"353.8","Logged_By":"Geologist","CollSurvey":"COLL","MaxSurveyDepth":"330.0"},
+{"Hole_ID":"HOLE007","DateStarted":"07\/04\/2016","DateCompleted":"16\/04\/2016","Orig_Survey_Method":"COLL","Max_Depth":"261.0","MetaDepth":"261.0","LithDepth":"261.0","AltDepth":"261.0","VeinDepth":"261.0","Logged_By":"Geologist","CollSurvey":"COLL","MaxSurveyDepth":"261.0"},
+{"Hole_ID":"HOLE008","DateStarted":"02\/01\/2016","DateCompleted":"03\/01\/2016","Orig_Survey_Method":"COLL","Max_Depth":"32.1","MetaDepth":"32.1","LithDepth":"32.1","AltDepth":"32.1","VeinDepth":"0.0","Logged_By":"Geologist","CollSurvey":"PLAN","MaxSurveyDepth":"30.0"},
+{"Hole_ID":"HOLE009","DateStarted":"06\/02\/2016","DateCompleted":"06\/02\/2016","Orig_Survey_Method":"COLL","Max_Depth":"9.9","MetaDepth":"9.9","LithDepth":"9.9","AltDepth":"9.9","VeinDepth":"9.9","Logged_By":"Geologist","CollSurvey":"COLL","MaxSurveyDepth":"0.0"},
+{"Hole_ID":"HOLE010","DateStarted":"06\/02\/2016","DateCompleted":"06\/02\/2016","Orig_Survey_Method":"COLL","Max_Depth":"9.9","MetaDepth":"9.9","LithDepth":"9.9","AltDepth":"9.9","VeinDepth":"9.9","Logged_By":"Geologist","CollSurvey":"COLL","MaxSurveyDepth":"0.0"}];
+
+            jTable_basic("#drillValidation", data,
+            ["Hole ID", " Date Started", "Date Finished", "Collar Point", "Collar Depth", "Metadata Depth", "Lithology Depth", "Alteration Depth", "Vein Depth", "Logged By", "0m Survey Type", "Max Survey Depth"]);
+            formatting();
+
+            // $.ajax({
+            // url: 'php/dhvalidation.php',
+            // type: "GET",
+            // dataType: "json",
+            // success: function(data) {
+            //     jTable_basic("#drillValidation", data,
+            //     ["Hole ID", " Date Started", "Date Finished", "Collar Point", "Collar Depth", "Metadata Depth", "Lithology Depth", "Alteration Depth", "Vein Depth", "Logged By", "0m Survey Type", "Max Survey Depth"]);
+            //     formatting();
+            //     }
+            // });
 
         });
 

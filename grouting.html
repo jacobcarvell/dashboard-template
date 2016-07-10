@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="Content/styles.css" />
-    <script src="scripts/jquery-2.2.0.min.js"></script>
-    <script src="scripts/tether.min.js"></script>
-    <script src="scripts/bootstrap.min.js"></script>
-    <script src="scripts/Chart.min.js"></script>
-    <script src="scripts/scripts.js"></script>
-    <script src="scripts/jtable.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="jquery-2.2.0.min.js"></script>
+    <script src="tether.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="Chart.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="jtable.js"></script>
 
 
 </head>
@@ -59,16 +59,22 @@
 
     <script>
         $(document).ready(function () {
-            $.ajax({
-                url: 'php/grouting.php',
-                type: "GET",
-                dataType: "json",
-                success: function(data) {
-                   var grouping = ["Drill_Program"];
-                   var headers = ["Drill Program", "Hole ID"]
-                   jTable("#grouting", data, grouping, false, headers);
-                }
-            });
+
+            var data = [{"Drill_Program":"Drillsite 1","Hole_ID":"HOLE001"},{"Drill_Program":"Drillsite 1","Hole_ID":"HOLE002"},{"Drill_Program":"Drillsite 1","Hole_ID":"HOLE003"},{"Drill_Program":"Drillsite 1","Hole_ID":"HOLE004"},{"Drill_Program":"Drillsite 1","Hole_ID":"HOLE005"},{"Drill_Program":"Drillsite 2","Hole_ID":"HOLE006"},{"Drill_Program":"Drillsite 2","Hole_ID":"HOLE007"},{"Drill_Program":"Drillsite 3","Hole_ID":"HOLE008"},{"Drill_Program":"Drillsite 3","Hole_ID":"HOLE009"},{"Drill_Program":"Drillsite 3","Hole_ID":"HOLE010"},{"Drill_Program":"Drillsite 3","Hole_ID":"HOLE011"},{"Drill_Program":"Drillsite 3","Hole_ID":"HOLE012"},{"Drill_Program":"Drillsite 3","Hole_ID":"HOLE013"}];
+            var grouping = ["Drill_Program"];
+            var headers = ["Drill Program", "Hole ID"]
+            jTable("#grouting", data, grouping, false, headers);
+
+            // $.ajax({
+            //     url: 'php/grouting.php',
+            //     type: "GET",
+            //     dataType: "json",
+            //     success: function(data) {
+            //        var grouping = ["Drill_Program"];
+            //        var headers = ["Drill Program", "Hole ID"]
+            //        jTable("#grouting", data, grouping, false, headers);
+            //     }
+            // });
         });
     </script>
 
