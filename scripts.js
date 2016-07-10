@@ -1,8 +1,8 @@
 function getFaces() {
 
-        var or1 = '<table><tr><th>Hole_ID</th><th>LastSampled</th><th>Date_Sampled</th><th>W_Au</th></tr><tr><td>Face_01</td><td>01</td><td>21/06/2016</td><td>2.50</td></tr><tr><td>Face_02</td><td>03</td><td>21/06/2016</td><td>6.30</td></tr><tr><td>Face_03</td><td>03</td><td>22/06/2016</td><td>12.00</td></tr><tr><td>Face_04</td><td>04</td><td>21/06/2016</td><td>4.25</td></tr><tr><td>Face_05</td><td>04</td><td>22/06/2016</td><td>3.75</td></tr><tr><td>Face_06</td><td>06</td><td>22/06/2016</td><td>2.25</td></tr></table>3';
-        var or2 = '<table><tr><th>Hole_ID</th><th>LastSampled</th><th>Date_Sampled</th><th>W_Au</th></tr><tr><td>Face_07</td><td>04</td><td>18/06/2016</td><td>3.00</td></tr><tr><td>Face_08</td><td>05</td><td>18/06/2016</td><td>1.00</td></tr></table>2';
-        var or3 = '<table><tr><th>Hole_ID</th><th>LastSampled</th><th>Date_Sampled</th><th>W_Au</th></tr><tr><td>Face_09</td><td>06</td><td>19/06/2016</td><td>1.50</td></tr></table>1';
+        var or1 = '<table><tr><th>Hole_ID</th><th>LastSampled</th><th>Date_Sampled</th><th>W_Au</th></tr><tr><td>Face_01</td><td>01</td><td>21/06/2016</td><td>2.50</td></tr><tr><td>Face_02</td><td>03</td><td>21/06/2016</td><td>6.30</td></tr><tr><td>Face_03</td><td>03</td><td>22/06/2016</td><td>12.00</td></tr><tr><td>Face_04</td><td>04</td><td>21/06/2016</td><td>4.25</td></tr><tr><td>Face_05</td><td>04</td><td>22/06/2016</td><td>3.75</td></tr><tr><td>Face_06</td><td>06</td><td>22/06/2016</td><td>2.25</td></tr></table>';
+        var or2 = '<table><tr><th>Hole_ID</th><th>LastSampled</th><th>Date_Sampled</th><th>W_Au</th></tr><tr><td>Face_07</td><td>04</td><td>18/06/2016</td><td>3.00</td></tr><tr><td>Face_08</td><td>05</td><td>18/06/2016</td><td>1.00</td></tr></table>';
+        var or3 = '<table><tr><th>Hole_ID</th><th>LastSampled</th><th>Date_Sampled</th><th>W_Au</th></tr><tr><td>Face_09</td><td>06</td><td>19/06/2016</td><td>1.50</td></tr></table>';
 
         $('#orebody1').html(or1);
         createDetails("orebody1");
